@@ -1,0 +1,15 @@
+SELECT 
+  sleep.Id,
+  weight.Date,
+  sleep.TotalMinutesAsleep,
+  weight.BMI
+FROM
+  `apt-aleph-476417-v4.Bellabeat_Casestudy.Sleep` AS sleep
+JOIN 
+  `apt-aleph-476417-v4.Bellabeat_Casestudy.Weight` AS weight
+ON
+  sleep.Id = weight.Id
+WHERE 
+  sleep.SleepDay = weight.Date
+ORDER BY 
+  sleep.Id, weight.Date;
