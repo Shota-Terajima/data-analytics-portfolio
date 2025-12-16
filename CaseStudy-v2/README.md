@@ -354,7 +354,7 @@ The exploratory analysis shows that the customer base is predominantly male, hig
 
 
 
-**Presentation slide:[](docs/CaseStudy2_Presentation.pptx)**
+**Presentation slide: [](docs/CaseStudy2_Presentation.pptx)**
 
 
 
@@ -385,5 +385,6 @@ This project uses data licensed under the **Apache License 2.0**.
 Some code structure, visualization ideas, and phrasing suggestions were assisted by AI tools (ChatGPT).
 
 All data cleaning decisions, analysis logic, interpretations, and final conclusions were reviewed and produced by the author.
+
 
 
