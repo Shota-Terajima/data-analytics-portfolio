@@ -16,9 +16,7 @@ Date: December 15th, 2025
 
 
 
-Customer retention has become one of the most critical challenges in the banking industry. As competition intensifies and customers have more choices than ever, banks
-
-must understand why customers decide to leave.
+Customer retention has become one of the most critical challenges in the banking industry. As competition intensifies and customers have more choices than ever, banks must understand why customers decide to leave.
 
 Therefore, identifying the key factors that contribute to customer churn is essential for designing effective retention strategies.
 
@@ -155,61 +153,194 @@ Removing duplicate records
 
 
 
-**Gender:**
+###### 
+
+###### 1\. Analyze Step — Framework (Outline)
 
 
 
-Male customers are the most common, followed by female customers
+The Analyze step focuses on identifying patterns in customer demographics, tenure, and financial behavior to provide context for churn. Exploratory data analysis is used to understand who the customers are, how they interact with the bank, and which financial signals are associated with churn.
 
 
 
-Consistent with global financial inclusion trends, male customers are the largest group in our dataset, followed by female customers. Worldwide, data indicate that a higher percentage of men have bank accounts compared with women, reflecting a common pattern in banking participation. World Bank
+**This analysis:**
 
 
 
-**Vintage(Customer tenure):**
+* Describes customer composition (gender, occupation)
+* Evaluates customer tenure (vintage) to understand retention structure
+* Examines relationships between balances, cash flow, incoming transactions, and churn
+* Compares observed patterns with real-world banking and workforce trends to assess external validity
 
 
 
-Nearly all customers (99%) have been with the bank for more than three years, indicating a highly tenured customer base
+###### 2\. Key Charts \& Insights
+
+
+
+**Chart 1: Gender Distribution (Pie Chart)**
 
 
 
 
 
-“A large portion of customers in our dataset have been with the bank for more than three years, indicating strong customer retention. Longer customer tenure in banking is often associated with higher loyalty and stable engagement, a trend supported in industry analyses of consumer financial behavior. 
-
-arXiv
-
-”
 
 
 
-🔎 3. “Self-employed is the most common occupation”
+
+**Insight:** Male customers are the most common group in the dataset, followed by female customers.
 
 
 
-Reality:
-
-Industry surveys show that self-employment is a significant component of the modern workforce — for example in the U.S., self-employed individuals make up about 10% of the workforce, and many banks offer products tailored to this group due to their unique income verification and financial needs. 
-
-Bankrate
+**Descriptive finding:**
 
 
 
-✔ This means seeing a high share of self-employed customers in a dataset can be realistic, especially depending on the dataset’s source and sample.
+Male customers constitute the largest segment in the dataset, followed by female customers. This pattern aligns with global financial inclusion trends reported by the World Bank, which show higher bank account ownership rates among men than women.
 
 
 
-Sentence for README:
+**World Bank:** https://www.worldbank.org/en/publication/globalfindex
 
 
 
-“In our customer dataset, self-employed individuals are the most common occupational category. This aligns with broader workforce data showing that self-employment constitutes a notable share of the labor market — for instance, approximately 10% of U.S. workers are self-employed, making this segment important for banking product design and customer segmentation. 
 
-Bankrate
 
-”
+**Chart 2: Vintage (Customer Tenure) Distribution (Pie Chart)**
+
+
+
+
+
+
+
+
+
+**Insight:** Nearly all customers (99%) have been with the bank for more than three years, indicating a highly tenured customer base.
+
+
+
+**Descriptive finding:**
+
+
+
+Nearly all customers (99%) in the dataset have been with the bank for more than three years, resulting in an overrepresentation of long-tenured customers. Consequently, churn patterns observed in this analysis primarily reflect behavior among established customers rather than those with lower tenure.
+
+
+
+
+
+**Chart 3: Occupation Distribution (Donut Pie Chart)**
+
+
+
+
+
+
+
+
+
+**Insight:** Self-employed individuals are the most common occupational group in the dataset.
+
+
+
+**Descriptive finding:**
+
+
+
+Self-employed individuals form the largest occupational group in the dataset, indicating that other occupational categories are comparatively underrepresented. As a result, the occupation distribution differs from real-world labor patterns and may limit the generalizability of occupation-based conclusions.
+
+
+
+**Bankrate:** https://www.bankrate.com/personal-finance/self-employment-statistics/
+
+
+
+
+
+###### 3\. Financial Behavior \& Churn Relationships 
+
+
+
+**Heatmap: Balance, Customer Tenure, and Churn**
+
+
+
+
+
+
+
+
+
+**Insight:** Churn is more strongly associated with low balance levels than with customer tenure.
+
+
+
+**Descriptive finding:** 
+
+
+
+Higher churn rates are concentrated among customers with lower balance levels, while churn remains relatively similar across different tenure groups.
+
+###### 
+
+
+
+**Scatter Plot: Cash Flow vs. Incoming Transactions**
+
+
+
+
+
+
+
+
+
+**Insight:**  Cash flow is strongly associated with incoming transaction volume
+
+
+
+**Descriptive finding:**
+
+
+
+The scatter plot shows a positive correlation between incoming transactions and cash flow, suggesting that higher transaction activity is associated with stronger cash flow.
+
+
+
+
+
+**Bar Chart: Cash Flow Change and Churn Rate**
+
+
+
+
+
+
+
+
+
+**Insight:**  Churn is strongly associated with declining cash flow.
+
+
+
+**Descriptive finding:**
+
+
+
+The bar chart shows that customers with declining cash flow—particularly large decreases—have substantially higher churn rates, while customers with stable cash flow are least likely to churn.
+
+
+
+
+
+###### 4\. Analyze Step — Summary
+
+
+
+
+
+The exploratory analysis shows that the customer base is predominantly male, highly tenured, and includes a substantial proportion of self-employed individuals. While demographic and tenure variables provide important context, financial behavior variables—particularly current balance, cash flow trends, and incoming transactions—show stronger associations with churn. Notably, the dominance of long-term customers suggests that churn reflects dissatisfaction among established customers rather than new acquisitions. 
 
 
 
@@ -219,11 +350,21 @@ Bankrate
 
 
 
-**Tableau dashboard:**
+**Tableau dashboard: https://public.tableau.com/app/profile/shota.terajima/vizzes**
 
 
 
 **Presentation slide:**
+
+
+
+
+
+### **Act**
+
+
+
+No Act phase was conducted for this analysis.
 
 ### 
 
