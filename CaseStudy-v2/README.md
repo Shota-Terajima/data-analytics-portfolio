@@ -181,7 +181,7 @@ The Analyze step focuses on identifying patterns in customer demographics, tenur
 **Chart 1: Gender Distribution (Pie Chart)**
 
 
-!(images/Gender_Pie.png)
+![](images/Gender_Pie.png)
 
 
 
@@ -210,7 +210,7 @@ Male customers constitute the largest segment in the dataset, followed by female
 **Chart 2: Vintage (Customer Tenure) Distribution (Pie Chart)**
 
 
-!(images/Vintage_Pie.png)
+![](images/Vintage_Pie.png)
 
 
 
@@ -235,7 +235,7 @@ Nearly all customers (99%) in the dataset have been with the bank for more than 
 
 
 
-!(images/Occupation_DonutPie.png)
+![](images/Occupation_DonutPie.png)
 
 
 
@@ -266,7 +266,7 @@ Self-employed individuals form the largest occupational group in the dataset, in
 **Heatmap: Balance, Customer Tenure, and Churn**
 
 
-!(images/Churn_Heatmap.png)
+![](images/Churn_Heatmap.png)
 
 
 
@@ -290,7 +290,7 @@ Higher churn rates are concentrated among customers with lower balance levels, w
 **Scatter Plot: Cash Flow vs. Incoming Transactions**
 
 
-!(images/Credit_Cashflow_Scatterplot.png)
+![](images/Credit_Cashflow_Scatterplot.png)
 
 
 
@@ -314,7 +314,7 @@ The scatter plot shows a positive correlation between incoming transactions and 
 **Bar Chart: Cash Flow Change and Churn Rate**
 
 
-!(images/Cashflow_Bar.png)
+![](images/Cashflow_Bar.png)
 
 
 
@@ -385,6 +385,7 @@ This project uses data licensed under the **Apache License 2.0**.
 Some code structure, visualization ideas, and phrasing suggestions were assisted by AI tools (ChatGPT).
 
 All data cleaning decisions, analysis logic, interpretations, and final conclusions were reviewed and produced by the author.
+
 
 
 
