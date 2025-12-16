@@ -10,7 +10,7 @@ Date: December 15th, 2025
 
 
 
-### **Introduction**
+## **Introduction**
 
 
 
@@ -32,7 +32,7 @@ This case study aims to provide clear, data-driven insights that banks can use t
 
 ### 
 
-### **Ask (Business Task)**
+## **Ask (Business Task)**
 
 
 
@@ -54,7 +54,7 @@ This case study aims to provide clear, data-driven insights that banks can use t
 
 
 
-### **Prepare (Data Understanding)**
+## **Prepare (Data Understanding)**
 
 ### 
 
@@ -100,7 +100,7 @@ Cited: Low (limited metadata and documentation)
 
 
 
-### **Process (Data Cleaning \& Transformation)**
+## **Process (Data Cleaning \& Transformation)**
 
 
 
@@ -149,7 +149,7 @@ Removing duplicate records
 
 
 
-### **Analyze**
+## **Analyze**
 
 
 
@@ -344,7 +344,7 @@ The exploratory analysis shows that the customer base is predominantly male, hig
 
 
 
-### **Share (Insights)**
+## **Share (Insights)**
 
 
 
@@ -359,7 +359,7 @@ The exploratory analysis shows that the customer base is predominantly male, hig
 
 
 
-### **Act**
+## **Act**
 
 
 
@@ -367,7 +367,7 @@ No Act phase was conducted for this analysis.
 
 ### 
 
-### **License**
+## **License**
 
 
 
@@ -377,13 +377,14 @@ This project uses data licensed under the **Apache License 2.0**.
 
 
 
-### **Use of AI**
+## **Use of AI**
 
 
 
 Some code structure, visualization ideas, and phrasing suggestions were assisted by AI tools (ChatGPT).
 
 All data cleaning decisions, analysis logic, interpretations, and final conclusions were reviewed and produced by the author.
+
 
 
 
