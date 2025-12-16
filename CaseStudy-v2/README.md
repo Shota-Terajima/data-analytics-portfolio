@@ -155,7 +155,7 @@ Removing duplicate records
 
 ###### 
 
-###### 1\. Analyze Step — Framework (Outline)
+### 1\. Analyze Step — Framework (Outline)
 
 
 
@@ -174,7 +174,7 @@ The Analyze step focuses on identifying patterns in customer demographics, tenur
 
 
 
-###### 2\. Key Charts \& Insights
+### 2\. Key Charts \& Insights
 
 
 
@@ -258,7 +258,7 @@ Self-employed individuals form the largest occupational group in the dataset, in
 
 
 
-###### 3\. Financial Behavior \& Churn Relationships 
+### 3\. Financial Behavior \& Churn Relationships 
 
 
 
@@ -334,7 +334,7 @@ The bar chart shows that customers with declining cash flow—particularly large
 
 
 
-###### 4\. Analyze Step — Summary
+### 4\. Analyze Step — Summary
 
 
 
@@ -384,6 +384,7 @@ This project uses data licensed under the **Apache License 2.0**.
 Some code structure, visualization ideas, and phrasing suggestions were assisted by AI tools (ChatGPT).
 
 All data cleaning decisions, analysis logic, interpretations, and final conclusions were reviewed and produced by the author.
+
 
 
 
