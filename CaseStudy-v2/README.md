@@ -10,7 +10,7 @@ Date: December 15th, 2025
 
 
 
-### **Introduction**
+## **Introduction**
 
 
 
@@ -32,7 +32,7 @@ This case study aims to provide clear, data-driven insights that banks can use t
 
 ### 
 
-### **Ask (Business Task)**
+## **Ask (Business Task)**
 
 
 
@@ -54,7 +54,7 @@ This case study aims to provide clear, data-driven insights that banks can use t
 
 
 
-### **Prepare (Data Understanding)**
+## **Prepare (Data Understanding)**
 
 ### 
 
@@ -100,7 +100,7 @@ Cited: Low (limited metadata and documentation)
 
 
 
-### **Process (Data Cleaning \& Transformation)**
+## **Process (Data Cleaning \& Transformation)**
 
 
 
@@ -149,13 +149,13 @@ Removing duplicate records
 
 
 
-### **Analyze**
+## **Analyze**
 
 
 
 ###### 
 
-###### 1\. Analyze Step — Framework (Outline)
+### 1\. Analyze Step — Framework (Outline)
 
 
 
@@ -174,7 +174,7 @@ The Analyze step focuses on identifying patterns in customer demographics, tenur
 
 
 
-###### 2\. Key Charts \& Insights
+### 2\. Key Charts \& Insights
 
 
 
@@ -183,7 +183,7 @@ The Analyze step focuses on identifying patterns in customer demographics, tenur
 
 
 
-
+![](images/Gender_Pie.png)
 
 
 
@@ -209,7 +209,7 @@ Male customers constitute the largest segment in the dataset, followed by female
 **Chart 2: Vintage (Customer Tenure) Distribution (Pie Chart)**
 
 
-
+![](images/Vintage_Pie.png)
 
 
 
@@ -233,7 +233,7 @@ Nearly all customers (99%) in the dataset have been with the bank for more than 
 **Chart 3: Occupation Distribution (Donut Pie Chart)**
 
 
-
+![](images/Occupation_DonutPie.png)
 
 
 
@@ -258,14 +258,14 @@ Self-employed individuals form the largest occupational group in the dataset, in
 
 
 
-###### 3\. Financial Behavior \& Churn Relationships 
+### 3\. Financial Behavior \& Churn Relationships 
 
 
 
 **Heatmap: Balance, Customer Tenure, and Churn**
 
 
-
+![](images/Churn_Heatmap.png)
 
 
 
@@ -290,7 +290,7 @@ Higher churn rates are concentrated among customers with lower balance levels, w
 
 
 
-
+![](images/Credit_Cashflow_Scatterplot.png)
 
 
 
@@ -316,7 +316,7 @@ The scatter plot shows a positive correlation between incoming transactions and 
 
 
 
-
+![](images/Cashflow_Bar.png)
 
 
 
@@ -334,7 +334,7 @@ The bar chart shows that customers with declining cash flow—particularly large
 
 
 
-###### 4\. Analyze Step — Summary
+### 4\. Analyze Step — Summary
 
 
 
@@ -344,7 +344,7 @@ The exploratory analysis shows that the customer base is predominantly male, hig
 
 
 
-### **Share (Insights)**
+## **Share (Insights)**
 
 
 
@@ -354,13 +354,13 @@ The exploratory analysis shows that the customer base is predominantly male, hig
 
 
 
-**Presentation slide:**
+**Presentation slide:[](docs/CaseStudy2_Presentation.pptx)**
 
 
 
 
 
-### **Act**
+## **Act**
 
 
 
@@ -368,7 +368,7 @@ No Act phase was conducted for this analysis.
 
 ### 
 
-### **License**
+## **License**
 
 
 
@@ -378,11 +378,12 @@ This project uses data licensed under the **Apache License 2.0**.
 
 
 
-### **Use of AI**
+## **Use of AI**
 
 
 
 Some code structure, visualization ideas, and phrasing suggestions were assisted by AI tools (ChatGPT).
 
 All data cleaning decisions, analysis logic, interpretations, and final conclusions were reviewed and produced by the author.
+
 
