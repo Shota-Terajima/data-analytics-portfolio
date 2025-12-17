@@ -1,219 +1,180 @@
-#GRAPH
+# Clean Dataset
 
-# Gender Distribution (Pie)
+library(tidyverse)
+library(scales)
 
-bank_gender <- bank %>% 
-  group_by(gender) %>%
-  summarise(count = n()) %>% 
-  mutate(perc_gender =count/sum(count))
+bank <- read_csv("Casestudy2_cleaned.csv")
 
-Gender_pie =  ggplot(bank_gender,
-                      aes(x = "", y = count, fill = gender_bucket))+
-  
-  geom_col() +
-  coord_polar("y")+
-  
-  geom_text(aes(label = percent(perc_vintage, accracy = 1)),
-            position = position_stack(vjust = 0.5),
-            size = 5) +
-  
-  scale_fill_manual(values = c(
-    "Male" = "#3399FF", 
-    "Female"   = "#FF6FB5",   
-    "Unknown" = "#BDBDBD")) + 
-  
-  theme_void() +
-  
-  labs(title = "Gender Distribution",
-       fill = "Gender tenure")+
-  
-  theme(plot.background = element_rect(fill = "white", color = NA),
-        plot.title = element_text(color = "black", size = 15 , face = "bold"),
-        legend.title = element_text(color = "black", face = "bold"),
-        legend.text  = element_text(color = "black"))
+bank <- bank %>% 
+  mutate(vintage_bucket = case_when(
+    vintage <= 180  ~ "0–6 months",
+    vintage <= 365  ~ "6–12 months",
+    vintage <= 1095 ~ "1–3 years",
+    vintage <= 1825 ~ "3–5 years",
+    TRUE            ~ "5+ years"
+  )) %>%
+  mutate(age_bucket = case_when(
+    age <= 17 ~ "1–17",
+    age <= 29 ~ "18–29",
+    age <= 44 ~ "30–44",
+    age <= 64 ~ "45–64",
+    TRUE      ~ "65–90"
+  )) %>%
+  mutate(dependents_bucket = case_when(
+    dependents == 0 ~ "0",
+    dependents == 1 ~ "1",
+    dependents <= 3 ~ "2–3",
+    TRUE      ~ "4+"
+  )) %>% 
+  mutate(current_balance_bucket = case_when(
+    current_balance < 0        ~ "Negative",
+    current_balance < 1000     ~ "0-1k",
+    current_balance < 5000     ~ "1k-5k",
+    current_balance < 20000    ~ "5k-20k",
+    current_balance < 50000    ~ "20k-50k",
+    current_balance >= 50000   ~ "50k+",
+    TRUE                      ~ NA_character_
+  )) %>%
+  mutate(previous_month_end_balance_bucket = case_when(
+    previous_month_end_balance < 0 ~ "Negative",
+    previous_month_end_balance <= 1000 ~ "0–1k",
+    previous_month_end_balance <= 5000 ~ "1k–5k",
+    previous_month_end_balance <= 20000 ~ "5k–20k",
+    previous_month_end_balance <= 50000 ~ "20k–50k",
+    TRUE ~ "50k+"
+  )) %>%  
+  mutate(average_monthly_balance_prevQ_bucket = case_when(
+    average_monthly_balance_prevQ < 0 ~ "Negative",
+    average_monthly_balance_prevQ <= 1000 ~ "0–1k",
+    average_monthly_balance_prevQ <= 5000 ~ "1k–5k",
+    average_monthly_balance_prevQ <= 20000 ~ "5k–20k",
+    average_monthly_balance_prevQ <= 50000 ~ "20k–50k",
+    TRUE ~ "50k+"
+  )) %>% 
+  mutate(average_monthly_balance_prevQ2_bucket = case_when(
+    average_monthly_balance_prevQ2 < 0 ~ "Negative",
+    average_monthly_balance_prevQ2 <= 1000 ~ "0–1k",
+    average_monthly_balance_prevQ2 <= 5000 ~ "1k–5k",
+    average_monthly_balance_prevQ2 <= 20000 ~ "5k–20k",
+    average_monthly_balance_prevQ2 <= 50000 ~ "20k–50k",
+    TRUE ~ "50k+"
+  )) %>% 
+  mutate(current_month_credit_bucket = case_when(
+    current_month_credit < 0 ~ "Negative",
+    current_month_credit == 0 ~ "No activity",
+    current_month_credit <= 1000 ~ "Low",
+    current_month_credit <= 5000 ~ "Medium",
+    current_month_credit <= 20000 ~ "High",
+    TRUE ~ "Very High"
+  )) %>% 
+  mutate(previous_month_credit_bucket = case_when(
+    previous_month_credit < 0 ~ "Negative",
+    previous_month_credit == 0 ~ "No activity",
+    previous_month_credit <= 1000 ~ "Low",
+    previous_month_credit <= 5000 ~ "Medium",
+    previous_month_credit <= 20000 ~ "High",
+    TRUE ~ "Very High"
+  )) %>% 
+  mutate(current_month_debit_bucket = case_when(
+    current_month_debit < 0 ~ "Negative",
+    current_month_debit == 0 ~ "No activity",
+    current_month_debit <= 1000 ~ "Low",
+    current_month_debit <= 5000 ~ "Medium",
+    current_month_debit <= 20000 ~ "High",
+    TRUE ~ "Very High"
+  )) %>% 
+  mutate(previous_month_debit_bucket = case_when(
+    previous_month_debit < 0 ~ "Negative",
+    previous_month_debit == 0 ~ "No activity",
+    previous_month_debit <= 1000 ~ "Low",
+    previous_month_debit <= 5000 ~ "Medium",
+    previous_month_debit <= 20000 ~ "High",
+    TRUE ~ "Very High"
+  )) %>% 
+  mutate(current_month_balance_bucket = case_when(
+    current_month_balance < 0 ~ "Negative",
+    current_month_balance <= 1000 ~ "0–1k",
+    current_month_balance <= 5000 ~ "1k–5k",
+    current_month_balance <= 20000 ~ "5k–20k",
+    current_month_balance <= 50000 ~ "20k–50k",
+    TRUE ~ "50k+"
+  )) %>% 
+  mutate(previous_month_balance_bucket = case_when(
+    previous_month_balance < 0 ~ "Negative",
+    previous_month_balance <= 1000 ~ "0–1k",
+    previous_month_balance <= 5000 ~ "1k–5k",
+    previous_month_balance <= 20000 ~ "5k–20k",
+    previous_month_balance <= 50000 ~ "20k–50k",
+    TRUE ~ "50k+"
+  )) %>% 
+  mutate(last_transaction_bucket = case_when(
+    last_transaction == 0 ~ "Unknown",
+    last_transaction <= 20190331 ~ "Old",
+    last_transaction <= 20190631 ~ "Mid Old",
+    last_transaction <= 20190931 ~ "Mid Recent",
+    TRUE ~ "Recent"
+  )) %>% 
+  mutate(current_net_month_cashflow_bucket = case_when(
+    current_net_month_cashflow <= -1000 ~ "Large Decrease",
+    current_net_month_cashflow < 0 ~ "Moderate Decrease",
+    current_net_month_cashflow == 0 ~ "No Change",
+    current_net_month_cashflow <= 1000 ~ "Moderate Increase",
+    TRUE ~ "Large Increase"
+  )) %>% 
+  mutate(previous_net_month_cashflow_bucket = case_when(
+    previous_net_month_cashflow <= -1000 ~ "Large Decrease",
+    previous_net_month_cashflow < 0 ~ "Moderate Decrease",
+    previous_net_month_cashflow == 0 ~ "No Change",
+    previous_net_month_cashflow <= 1000 ~ "Moderate Increase",
+    TRUE ~ "Large Increase"
+  )) %>% 
+  mutate(monthly_credit_change_bucket = case_when(
+    monthly_credit_change <= -1000 ~ "Large Decrease",
+    monthly_credit_change < 0 ~ "Moderate Decrease",
+    monthly_credit_change == 0 ~ "No Change",
+    monthly_credit_change <= 1000 ~ "Moderate Increase",
+    TRUE ~ "Large Increase"
+  )) %>% 
+  mutate(monthly_debit_change_bucket = case_when(
+    monthly_debit_change <= -1000 ~ "Large Decrease",
+    monthly_debit_change < 0 ~ "Moderate Decrease",
+    monthly_debit_change == 0 ~ "No Change",
+    monthly_debit_change <= 1000 ~ "Moderate Increase",
+    TRUE ~ "Large Increase"
+  )) %>% 
+  mutate(monthly_balance_change_bucket = case_when(
+    monthly_balance_change <= -1000 ~ "Large Decrease",
+    monthly_balance_change < 0 ~ "Moderate Decrease",
+    monthly_balance_change == 0 ~ "No Change",
+    monthly_balance_change <= 1000 ~ "Moderate Increase",
+    TRUE ~ "Large Increase"
+  ))
 
-# Vintage Distribution(Pie) 
+bank <- bank %>% 
+  mutate(occupation = ifelse(occupation %in% c("None", "company"),
+                             "Unknown",
+                             occupation))
 
-bank_vintage <- bank %>%
-  group_by(vintage_bucket) %>%
-  summarise(count = n()) %>%
-  mutate(perc_vintage =count/sum(count))
-
-Vintage_pie =  ggplot(bank_vintage,
-                      aes(x = "", y = count, fill = vintage_bucket))+
-  
-  geom_col() +
-  coord_polar("y")+
-  
-  geom_text(aes(label = ifelse(perc_vintage >0.05,
-                               percent(perc_vintage,accracy = 1), "")),
-            position = position_stack(vjust = 0.5),
-            size = 5) +
-  
-  scale_fill_manual(values = c(
-    "0-6 months" = "#FB9A99", 
-    "6-12 months"   = "#B2DF8A",   
-    "1-3 years" = "#CCCCCC",
-    "3-5 years" = "#A6CEE3",
-    "5+ years" = "#1F78B4"
-  )) + 
-  
-  theme_void() +
-  
-  labs(title = "Customer tenure Distribution",
-       fill = "Customer tenure")+
-  
-  theme(plot.background = element_rect(fill = "white", color = NA),
-        plot.title = element_text(color = "black", size = 15 , face = "bold"),
-        legend.title = element_text(color = "black", face = "bold"),
-        legend.text  = element_text(color = "black"))
-
-# Occupation Distribution (Pie)
-
-bank_occupation <- bank %>% 
-  group_by(occupation) %>%
-  summarise(count = n()) %>% 
-  mutate(perc_occupation =count/sum(count))
-
-Occupation_pie =  ggplot(bank_occupation,
-         aes(x = 2 , y = count, fill = occupation))+
-    
-    geom_col() +
-    coord_polar("y")+
-    xlim(1, 2.5)+
-  
-    
-    
-    scale_fill_manual(values = c(
-      "retired"      = "#A6CEE3",
-      "salaried"     = "#1F78B4",
-      "self_employed"= "#B2DF8A",
-      "student"      = "#FB9A99",
-      "Unknown"      = "#CCCCCC"
-    )) +
-    
-    geom_text(
-      aes(label = ifelse(perc_occupation > 0.05,
-                         percent(perc_occupation, accuracy = 1), "")),
-      position = position_stack(vjust = 0.5),
-      size = 5
-    ) +
-    
-    theme_void()+
-    
-    labs(title = "Occupation Distribution",
-         fill = "Occupation")+
-    
-    theme(plot.background = element_rect(fill = "white", color = NA), 
-          plot.title = element_text(color = "black", size = 15 , face = "bold"),
-          legend.title = element_text(color = "black", face = "bold"),
-          legend.text  = element_text(color = "black"))
-
-  
-# Cash flow(Bar)
-
-
-bank_current_cashflow <- bank %>%
-  group_by(current_net_month_cashflow_bucket) %>%  
-  summarise(
-    churn_rate = mean(churn, na.rm = TRUE))
-
-bank_current_cashflow$current_net_month_cashflow_bucket <- factor(
-  bank_current_cashflow$current_net_month_cashflow_bucket,
-  levels = c("Large Decrease",
-             "Moderate Decrease",
-             "No Change",
-             "Moderate Increase",
-             "Large Increase"))
-
-
-Cashflow_bar =  ggplot(bank_current_cashflow, aes(x = current_net_month_cashflow_bucket)) +
-    geom_col(aes(y = churn_rate), fill = "#8B2500") +
-    geom_line(aes(y = churn_rate, group = 1), color = "red", size = 1.5) +
-    geom_point(aes(y = churn_rate), color = "red", size = 2.0) +
-    labs(
-      title = "Churn Rate(Ave) and Cash flow",
-      x = "Cash flow",
-      y = "Churn Rate"
-    ) +
-  
-    theme_minimal()+
-  
-  theme(
-    plot.title   = element_text(size = 15, face = "bold", hjust = 0.5),
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    axis.text.x  = element_text(angle = 45, hjust = 1),
-    plot.background  = element_rect(fill = "white", color = NA),
-    panel.background = element_rect(fill = "white", color = NA)
-  )
-
-
-# Balance and Vintage(Heat_map)
-
-heatmap_data <- bank %>%
-  group_by(current_balance_bucket, vintage_bucket) %>%
-  summarise(
-    churn_rate     = mean(churn, na.rm = TRUE)
-  )
-
-churn_heatmap =  ggplot(heatmap_data,
-         aes(x = vintage_bucket,
-             y = current_balance_bucket,
-             fill = churn_rate)) +
-    geom_tile(color = "black") +
-    
-    scale_fill_gradient(
-      low  = "white",
-      high = "red",
-      name = "Churn Rate",
-      labels = percent_format(accuracy = 1)
-    ) +
-    
-    labs(
-      title = "Churn Rate by Balance and Customer tenure",
-      x = "Customer tenure",
-      y = "Current Balance"
-    ) +
-    theme_minimal() +
-    theme(
-      plot.title   = element_text(size = 15, face = "bold", hjust = 0.5),
-      axis.title.x = element_text(size = 14),
-      axis.title.y = element_text(size = 14),
-      axis.text.x  = element_text(angle = 45, hjust = 1),
-      plot.background  = element_rect(fill = "white", color = NA),
-      panel.background = element_rect(fill = "white", color = NA)
+bank <- bank %>%
+  mutate(
+    current_balance_bucket = case_when(
+      current_balance < 0        ~ "Negative",
+      current_balance < 1000     ~ "0-1k",
+      current_balance < 5000     ~ "1k-5k",
+      current_balance < 20000    ~ "5k-20k",
+      current_balance < 50000    ~ "20k-50k",
+      current_balance >= 50000   ~ "50k+",
+      TRUE                       ~ NA_character_
+    ),
+    current_balance_bucket = factor(
+      current_balance_bucket,
+      levels = c("Negative",
+                 "0-1k",
+                 "1k-5k",
+                 "5k-20k",
+                 "20k-50k",
+                 "50k+")
     )
-
-
-
-#Credit and Cash flow (Scatter plot)
-
-credit_cashflow_scatter <- ggplot(
-  bank,
-  aes(
-    x = current_month_credit,
-    y = current_net_month_cashflow
-  )
-) +
-  geom_point(
-    color = "#4E79A7",
-    size = 1.3
-  ) +
-  scale_x_log10(labels = scales::comma) +
-  scale_y_log10(labels = scales::comma) +
-  labs(
-    title = "Relationship Between Incoming transactions and Cash flow",
-    x = "Monthly Cash flow",
-    y = "Monthly Incoming transactions"
-  ) +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(size = 15, face = "bold"),
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    plot.background  = element_rect(fill = "white", color = NA),
-    panel.background = element_rect(fill = "white", color = NA)
   )
 
-
+write.csv(bank, "CaseStudy2_BANK_cleaned_all.csv", row.names = FALSE)
